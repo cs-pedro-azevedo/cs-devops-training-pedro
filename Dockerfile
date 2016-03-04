@@ -1,25 +1,20 @@
-FROM ubuntu:trusty
+FROM ubuntu:wily
 MAINTAINER "Pedro Cesar" <pedro.azevedo@concretesolutions.com.br>
 EXPOSE 4567
 
+
 # INSTALL BASE TOOLS
-WORKDIR /root
 RUN apt-get update
-RUN apt-get install -yq git wget curl build-essential autoconf bison libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev 
-RUN git clone git://github.com/sstephenson/rbenv.git .rbenv
-RUN eval "$(/root/.rbenv/bin/rbenv init -)"
-RUN git clone git://github.com/sstephenson/ruby-build.git /root/.rbenv/plugins/ruby-build
-RUN /root/.rbenv/bin/rbenv install 2.1.0
-RUN /root/.rbenv/bin/rbenv global 2.1.0
-RUN /root/.rbenv/bin/rbenv rehash
-#RUN gem install --no-ri --no-rdoc bundler
+RUN apt-get install -y --force-yes build-essential curl git
+RUN apt-get install -y --force-yes zlib1g-dev libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt-dev
+RUN apt-get clean
 
-
-# CONFIGURE BASE APPLICATION
-RUN mkdir -p /app/
-ADD slate/ /app/slate/
-RUN cd /app/slate/; bundle install
-
-# BOOTSTRAP
-ONBUILD ADD . /app/source/slate
-CMD ["bundle", "exec", "middleman", "server"]
+RUN git clone https://github.com/sstephenson/rbenv.git /root/.rbenv
+RUN git clone https://github.com/sstephenson/ruby-build.git /root/.rbenv/plugins/ruby-build
+RUN /root/.rbenv/plugins/ruby-build/install.sh
+ENV PATH /root/.rbenv/bin:$PATH
+RUN echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh # or /etc/profile
+RUN echo 'eval "$(rbenv init -)"' >> .bashrc
+RUN rbenv install 2.1.0
+RUN rbenv global 2.1.0
+RUN gem install --no-ri --no-rdoc bundler
