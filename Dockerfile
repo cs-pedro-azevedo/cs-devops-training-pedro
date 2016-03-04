@@ -5,7 +5,7 @@ EXPOSE 4567
 # INSTALL BASE TOOLS
 WORKDIR /root
 RUN apt-get update
-RUN apt-get install -yq git wget curl autoconf bison libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev 
+RUN apt-get install -yq git wget curl build-essential autoconf bison libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev 
 RUN git clone git://github.com/sstephenson/rbenv.git .rbenv
 RUN eval "$(/root/.rbenv/bin/rbenv init -)"
 RUN git clone git://github.com/sstephenson/ruby-build.git /root/.rbenv/plugins/ruby-build
