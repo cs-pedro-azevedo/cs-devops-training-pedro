@@ -12,9 +12,10 @@ RUN apt-get clean
 RUN git clone https://github.com/sstephenson/rbenv.git /root/.rbenv
 RUN git clone https://github.com/sstephenson/ruby-build.git /root/.rbenv/plugins/ruby-build
 RUN /root/.rbenv/plugins/ruby-build/install.sh
-ENV PATH /root/.rbenv/bin:$PATH
+ENV PATH /root/.rbenv/shims:/root/.rbenv/bin:$PATH
 RUN echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh # or /etc/profile
 RUN echo 'eval "$(rbenv init -)"' >> .bashrc
+ENV CONFIGURE_OPTS --disable-install-doc
 RUN rbenv install 2.1.0
 RUN rbenv global 2.1.0
 RUN gem install --no-ri --no-rdoc bundler
