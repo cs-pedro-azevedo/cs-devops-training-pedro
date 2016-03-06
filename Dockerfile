@@ -22,7 +22,7 @@ RUN rbenv global 2.1.0
 RUN gem install --no-ri --no-rdoc bundler
 
 # CONFIGURE BASE APPLICATION
-RUN mkdir -p /app/
+RUN mkdir -p /app/slate
 ADD slate/ /app/slate/
 RUN cd /app/slate/; bundle install
 WORKDIR /app/slate
