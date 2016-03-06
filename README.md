@@ -14,7 +14,6 @@ Technologies
 Running the Container
 ------------------------------
 
-
 ```shell
 git clone https://github.com/cs-pedro-azevedo/cs-training-devops.git
 cd cs-training-devops
