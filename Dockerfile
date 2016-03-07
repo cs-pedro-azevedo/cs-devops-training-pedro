@@ -30,4 +30,3 @@ WORKDIR /app/slate
 # BOOTSTRAP
 ONBUILD ADD . /app/source/slate
 CMD ["bundle", "exec", "middleman", "server"]
-
