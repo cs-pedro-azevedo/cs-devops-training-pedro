@@ -11,14 +11,16 @@ Technologies
 * **Write code samples in multiple languages** — If your API has bindings in multiple programming languages, you can easily put in tabs to switch between them. In your document, you'll distinguish different languages by specifying the language name at the top of each code block, just like with Github Flavored Markdown.
 
 
+
 Running the Container
 ------------------------------
 
 ```shell
 git clone https://github.com/cs-pedro-azevedo/cs-training-devops.git
 cd cs-training-devops
-docker run cspedroazevedo/cs-training-devops -p 4567:4567 -v slate/source:/app/slate/source
+docker run cspedroazevedo/cs-training-devops -p 4567:4567 -v $(pwd)slate/source:/app/slate/source 
 ```
+
 
 
 Repositories used to 
