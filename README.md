@@ -18,7 +18,7 @@ Running the Container
 ```shell
 git clone https://github.com/cs-pedro-azevedo/cs-training-devops.git
 cd cs-training-devops
-docker run -p 4567:4567 -v $(pwd)slate/source:/app/slate/source -d cspedroazevedo/cs-training-devops
+docker run -p 4567:4567 -v $(pwd)/slate/source:/app/slate/source -d cspedroazevedo/cs-training-devops
 ```
 
 
