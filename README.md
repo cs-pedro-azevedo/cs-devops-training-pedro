@@ -1,4 +1,4 @@
-# cs-training-devops
+# cs-devops-training-pedro
 Repository to practice many technologies and ways to show knowledge about those technologies. The main idea is delivery a product (documentation) about all the process and show the steps to create a container serving a documentation of all processes. 
 
 Technologies
